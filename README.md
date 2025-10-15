@@ -116,7 +116,7 @@ AxiomML/
     model.fit(X_train, y_train)
     predictions = model.predict(X_test)
     accuracy = model.score(X_test, y_test)
-    ```
+    '''
 
 ## 🎯 Educational Value
 
@@ -146,6 +146,7 @@ model = Sequential([
 # Train with understanding of every operation
 model.compile(loss=CrossEntropy(), optimizer=Adam())
 model.fit(X_train, y_train, epochs=10, verbose=True)
+'''
 
 🤝 Contributing
 This is primarily a personal educational journey, but discussions, suggestions, and contributions are welcome! Feel free to open an issue to discuss a new algorithm or submit a pull request.
