@@ -148,44 +148,38 @@ model.compile(loss=CrossEntropy(), optimizer=Adam())
 model.fit(X_train, y_train, epochs=10, verbose=True)
 ```
 
-🤝 Contributing
+
+## 🤝 Contributing
+
 This is primarily a personal educational journey, but discussions, suggestions, and contributions are welcome! Feel free to open an issue to discuss a new algorithm or submit a pull request.
 
-Development Guidelines:
-Prioritize clarity over performance
+**Development Guidelines:**
+- Prioritize clarity over performance
+- Include comprehensive comments explaining the "why"
+- Maintain sklearn-like API where possible
+- Add examples and unit tests for new implementations
 
-Include comprehensive comments explaining the "why"
+## 📊 Progress Tracking
 
-Maintain sklearn-like API where possible
+- ✅ Regression Algorithms: 100% Complete
+- ✅ Classification Algorithms: 100% Complete
+- 🔄 Deep Learning Core: 0% Complete
+- 🔮 Advanced ML: 0% Complete
 
-Add examples and unit tests for new implementations
+## 📝 License
 
-📊 Progress Tracking
-✅ Regression Algorithms: 100% Complete
+This project is open source and available under the [MIT License](https://license/).
 
-✅ Classification Algorithms: 100% Complete
+> “If you can't implement it from scratch, you don't truly understand it.” — AxiomML Philosophy
 
-🔄 Deep Learning Core: 0% Complete
+---
 
-🔮 Advanced ML: 0% Complete
+### Key Updates Made
 
-📝 License
-This project is open source and available under the MIT License.
-
-"If you can't implement it from scratch, you don't truly understand it." - AxiomML Philosophy
-
-
-## Key Updates Made:
-
-1. **Current Progress**: Moved Regression and Classification algorithms to "COMPLETED" status
-2. **Detailed Structure**: Added comprehensive project structure showing all modules
-3. **Deep Learning Roadmap**: 
-   - Core components (activations, losses, optimizers, layers)
-   - Neural network architectures (FNN, CNN, RNN, Transformers)
-   - NLP pipeline from scratch
-4. **Advanced ML**: Added future categories for unsupervised learning, dimensionality reduction, and specialized architectures
-5. **Educational Focus**: Emphasized the learning value with specific examples
-6. **Progress Tracking**: Visual progress indicators for different phases
-7. **Development Guidelines**: Clear contribution standards maintaining the educational focus
-
-This README now accurately reflects our substantial progress while clearly outlining the exciting deep learning journey ahead! The structure sets us up perfectly for building neural networks from the ground up, starting with fundamental components and building toward complex architectures.
+1. **Current Progress**: Regression and Classification algorithms marked as "COMPLETED".
+2. **Detailed Structure**: Expanded project structure and all core modules.
+3. **Deep Learning Roadmap**: Clear breakdown of components and model types.
+4. **Advanced ML**: Roadmap for unsupervised/additional models.
+5. **Educational Focus**: Highlighted specific features for learners.
+6. **Progress Tracking**: Visual checklist for all phases.
+7. **Development Guidelines**: Emphasis on clarity and testing.
