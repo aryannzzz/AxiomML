@@ -27,7 +27,6 @@ AxiomML/
 ├── tests/ # Unit tests for all implementations
 └── requirements.txt # Project dependencies
 
-
 ## 📚 Implemented Algorithms (The Axioms)
 
 ### ✅ Phase 1: Core Regression Algorithms (COMPLETED)
