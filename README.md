@@ -26,16 +26,15 @@ Modern ML libraries are powerful but abstract. They hide the beautiful math and 
 AxiomML/
 ├── axiom/
 │   ├── linear_model/       # Linear models (regression & classification)
-│   ├── tree/               # Decision trees and ensembles
+│   ├── tree/               # Decision trees
 │   ├── ensemble/           # Random Forests and ensemble methods
 │   ├── svm/                # Support Vector Machines
 │   ├── neighbors/          # K-Nearest Neighbors
 │   ├── naive_bayes/        # Naive Bayes classifiers
-│   ├── neural_networks/    # Deep learning components (in progress)
+│   ├── neural_networks/    # Deep learning components ✨ NEW
 │   ├── preprocessing/      # Data preprocessing utilities
-│   └── metrics/            # Evaluation metrics
-├── examples/               # Jupyter notebooks with usage examples
-├── tests/                  # Unit tests for all implementations
+│   └── metrics/            # Evaluation metrics ✨ NEW
+├── examples/               # Comprehensive usage examples
 └── requirements.txt        # Project dependencies
 ```
 
@@ -66,27 +65,53 @@ AxiomML/
 | **Decision Tree Classifier** | Information-based splitting | Gini impurity, entropy |
 | **Random Forest Classifier** | Voting ensemble | Bootstrap aggregating |
 
-### 🔄 Phase 3: Deep Learning Foundations (IN PROGRESS - 0%)
+### ✅ Phase 3: Deep Learning Foundations (COMPLETED - 60%)
 
-#### Building Blocks
-- [ ] **Activation Functions** - Sigmoid, Tanh, ReLU, LeakyReLU, Softmax
-- [ ] **Loss Functions** - MSE, Cross-Entropy, Hinge, Huber
-- [ ] **Optimizers** - SGD, Momentum, Adam, RMSprop, AdaGrad
-- [ ] **Layer Types** - Dense, Dropout, BatchNorm, LayerNorm
-- [ ] **Initialization** - Xavier, He, uniform, normal
+#### Neural Network Core Components ✅ **COMPLETED**
+- ✅ **Activation Functions** (Sigmoid, Tanh, ReLU, LeakyReLU, Softmax, ELU)
+- ✅ **Loss Functions** (MSE, MAE, BCE, CCE, Hinge, Huber)
+- ✅ **Optimizers** (SGD, Momentum, RMSprop, Adam, AdaGrad)
+- ✅ **Layer Types** (Dense, Dropout, BatchNorm, LayerNorm)
+- ✅ **Initialization** (Xavier, He, LeCun, + variants)
 
-#### Architectures
+#### Architectures (NEXT)
 - [ ] **Feedforward Neural Networks** - Multi-layer perceptrons with backpropagation
-- [ ] **Convolutional Neural Networks** - Conv2D, pooling, modern architectures (ResNet, VGG)
+- [ ] **Convolutional Neural Networks** - Conv2D, pooling, modern architectures
 - [ ] **Recurrent Neural Networks** - Vanilla RNN, LSTM, GRU for sequences
 - [ ] **Transformers** - Self-attention, multi-head attention, positional encoding
 
-#### NLP Components
+#### NLP Components (PLANNED)
 - [ ] **Word Embeddings** - Word2Vec (CBOW, Skip-gram), GloVe
 - [ ] **Text Preprocessing** - Tokenization, vocabulary, padding
 - [ ] **Sequence Models** - Language modeling, classification, generation
 
-### 🔮 Phase 4: Advanced ML (PLANNED - 0%)
+### ✅ Phase 3.5: Evaluation Metrics (COMPLETED)
+
+#### Classification Metrics ✅
+- ✅ `accuracy_score` - Overall correctness
+- ✅ `precision_score` - Positive prediction accuracy
+- ✅ `recall_score` - Actual positive detection rate
+- ✅ `f1_score` - Harmonic mean of precision & recall
+- ✅ `confusion_matrix` - Prediction breakdown
+- ✅ `classification_report` - Comprehensive metrics
+- ✅ `balanced_accuracy_score` - For imbalanced data
+- ✅ `matthews_corrcoef` - Correlation metric
+- ✅ `log_loss` - For probability predictions
+
+#### Regression Metrics ✅
+- ✅ `mean_squared_error` (MSE) - Squared errors
+- ✅ `root_mean_squared_error` (RMSE) - Square root of MSE
+- ✅ `mean_absolute_error` (MAE) - Absolute errors
+- ✅ `r2_score` - Variance explained (R²)
+- ✅ `adjusted_r2_score` - R² adjusted for features
+- ✅ `mean_absolute_percentage_error` (MAPE) - Percentage errors
+- ✅ `median_absolute_error` - Robust to outliers
+- ✅ `max_error` - Worst-case error
+- ✅ `explained_variance_score` - Variance explained
+- ✅ `mean_squared_log_error` (MSLE) - MSE in log space
+- ✅ `regression_report` - Comprehensive metrics
+
+### 🔮 Phase 4: Advanced ML (PLANNED)
 
 <details>
 <summary><b>Unsupervised Learning</b></summary>
@@ -138,7 +163,7 @@ AxiomML/
 
 ### Installation
 ```bash
-git clone https://github.com/a-jacked-nerd/AxiomML.git
+git clone https://github.com/aryannzzz/AxiomML.git
 cd AxiomML
 pip install -r requirements.txt
 ```
@@ -146,47 +171,97 @@ pip install -r requirements.txt
 ### Basic Usage
 
 The API mirrors Scikit-learn for familiarity:
-```python
-# Regression Example
-from axiom.linear_model import LinearRegression
-from axiom.tree import DecisionTreeRegressor
-from axiom.ensemble import RandomForestRegressor
 
+#### Regression
+```python
+from axiom.linear_model import LinearRegression, PolynomialRegression
+from axiom.ensemble import RandomForestRegressor
+from axiom.metrics import mean_squared_error, r2_score
+
+# Train model
 model = LinearRegression()
 model.fit(X_train, y_train)
+
+# Make predictions
 predictions = model.predict(X_test)
-r2_score = model.score(X_test, y_test)
 
-# Classification Example  
-from axiom.linear_model import LogisticRegression
-from axiom.svm import SVC
-from axiom.ensemble import RandomForestClassifier
-
-classifier = LogisticRegression()
-classifier.fit(X_train, y_train)
-predictions = classifier.predict(X_test)
-accuracy = classifier.score(X_test, y_test)
+# Evaluate
+mse = mean_squared_error(y_test, predictions)
+r2 = r2_score(y_test, predictions)
 ```
 
-### Deep Learning (Coming Soon)
+#### Classification
 ```python
-from axiom.neural_networks import Sequential
-from axiom.neural_networks.layers import Dense, Dropout
-from axiom.neural_networks.activations import ReLU, Softmax
-from axiom.neural_networks.losses import CrossEntropy
-from axiom.neural_networks.optimizers import Adam
+from axiom.linear_model import LogisticRegression
+from axiom.ensemble import RandomForestClassifier
+from axiom.metrics import accuracy_score, classification_report
 
-# Build a neural network from fundamental components
-model = Sequential([
-    Dense(128, input_dim=784, activation=ReLU()),
-    Dropout(0.3),
-    Dense(64, activation=ReLU()),
-    Dense(10, activation=Softmax())
-])
+# Train model
+classifier = LogisticRegression()
+classifier.fit(X_train, y_train)
 
-# Train with full visibility into every operation
-model.compile(loss=CrossEntropy(), optimizer=Adam(lr=0.001))
-history = model.fit(X_train, y_train, epochs=10, batch_size=32, verbose=True)
+# Make predictions
+predictions = classifier.predict(X_test)
+
+# Evaluate
+accuracy = accuracy_score(y_test, predictions)
+report = classification_report(y_test, predictions)
+```
+
+#### Neural Networks
+```python
+from axiom.neural_networks import Dense, ReLU, Sigmoid, Adam, BinaryCrossEntropy
+
+# Build network
+hidden = Dense(10, 64)
+hidden.initialize('he')
+output = Dense(64, 1)
+output.initialize('xavier')
+
+# Setup training
+relu = ReLU()
+sigmoid = Sigmoid()
+optimizer = Adam(learning_rate=0.001)
+loss_fn = BinaryCrossEntropy()
+
+# Training loop
+for epoch in range(epochs):
+    # Forward pass
+    h1 = hidden(X, training=True)
+    a1 = relu(h1)
+    h2 = output(a1, training=True)
+    y_pred = sigmoid(h2)
+    
+    # Compute loss
+    loss = loss_fn(y_true, y_pred)
+    
+    # Backward pass and update
+    # ... (see examples for complete implementation)
+```
+
+---
+
+## 📖 Examples
+
+Comprehensive examples for every module:
+
+| Example File | Description | Examples |
+|--------------|-------------|----------|
+| `regression_examples.py` | Linear regression models | 5 examples |
+| `classification_examples.py` | Classification algorithms | 7 examples |
+| `ensemble_examples.py` | Random forests | 7 examples |
+| `neural_networks_demo.py` | Neural network components | 7 examples |
+| `metrics_examples.py` | Evaluation metrics | 8 examples |
+
+**Total: 34 comprehensive examples!**
+
+Run examples:
+```bash
+python examples/regression_examples.py
+python examples/classification_examples.py
+python examples/ensemble_examples.py
+python examples/neural_networks_demo.py
+python examples/metrics_examples.py
 ```
 
 ---
@@ -241,10 +316,14 @@ def _gradient_descent(self, X, y, learning_rate=0.01, n_iterations=1000):
 |-------|-----------|----------|--------|
 | 1️⃣ | Regression Algorithms | 7/7 | ✅ Complete |
 | 2️⃣ | Classification Algorithms | 6/6 | ✅ Complete |
-| 3️⃣ | Deep Learning Core | 0/15 | 🔄 In Progress |
+| 3️⃣ | Deep Learning Core | 5/5 | ✅ Complete |
+| 3️⃣ | Neural Network Architectures | 0/4 | 🔄 Next |
+| 3.5 | Evaluation Metrics | 20/20 | ✅ Complete |
 | 4️⃣ | Advanced ML | 0/20+ | 🔮 Planned |
 
-**Overall Completion: ~40%**
+**Overall Completion: ~50%**
+
+**Lines of Code:** ~8,000+ heavily documented lines
 
 ---
 
@@ -266,7 +345,7 @@ This is primarily a personal educational journey, but contributions are welcome!
 - **Document the "why"** - Explain mathematical intuition, not just implementation
 - **Mirror sklearn API** - Maintain familiar `.fit()`, `.predict()`, `.score()` methods
 - **Test thoroughly** - Add unit tests for edge cases
-- **Provide examples** - Include Jupyter notebooks demonstrating usage
+- **Provide examples** - Include usage demonstrations
 
 ---
 
@@ -277,7 +356,7 @@ Want to understand the math behind the algorithms? Check out these resources:
 - [Mathematics for Machine Learning](https://mml-book.github.io/) - Linear algebra, calculus, probability
 - [Pattern Recognition and Machine Learning](https://www.microsoft.com/en-us/research/publication/pattern-recognition-machine-learning/) - Bishop's classic textbook
 - [Deep Learning Book](https://www.deeplearningbook.org/) - Goodfellow et al.
-- [AxiomML Examples](./examples/) - Our own Jupyter notebooks with detailed walkthroughs
+- [AxiomML Examples](./examples/) - Our own detailed walkthroughs
 
 ---
 
@@ -306,7 +385,7 @@ This isn't about reinventing the wheel. It's about understanding why the wheel i
 
 <div align="center">
 
-**[⭐ Star this repo](https://github.com/a-jacked-nerd/AxiomML)** if you find it helpful!
+**[⭐ Star this repo](https://github.com/aryannzzz/AxiomML)** if you find it helpful!
 
 Made with ❤️ for learners who want to peek under the hood
 
