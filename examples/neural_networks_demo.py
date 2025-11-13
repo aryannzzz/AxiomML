@@ -1,17 +1,26 @@
-# Example Usage of Neural Network Building Blocks
+# examples/neural_networks_demo.py
 """
-This file demonstrates how to use the neural network components
-for building and training models from scratch.
+Neural Network Building Blocks - Usage Examples
+Demonstrates activation functions, losses, optimizers, layers, and initializers
 """
 
 import numpy as np
+import sys
+sys.path.insert(0, '..')  # Allow imports when running from examples/
 
-# Import all components
-from activations import ReLU, Sigmoid, Softmax, get_activation
-from losses import MSELoss, BinaryCrossEntropy, CategoricalCrossEntropy
-from optimizers import Adam, SGD, get_optimizer
-from layers import Dense, Dropout, BatchNorm, LayerNorm
-from initializers import get_initializer, get_recommended_initializer
+# Import all components with correct paths
+from axiom.neural_networks import (
+    # Activations
+    ReLU, Sigmoid, Softmax, Tanh, LeakyReLU, get_activation,
+    # Losses
+    MSELoss, BinaryCrossEntropy, CategoricalCrossEntropy,
+    # Optimizers
+    Adam, SGD, RMSprop, get_optimizer,
+    # Layers
+    Dense, Dropout, BatchNorm, LayerNorm,
+    # Initializers
+    get_initializer, get_recommended_initializer
+)
 
 
 def example_1_simple_forward_pass():
@@ -180,8 +189,8 @@ def example_5_activation_functions():
     activations = {
         'ReLU': ReLU(),
         'Sigmoid': Sigmoid(),
-        'Tanh': get_activation('tanh'),
-        'LeakyReLU': get_activation('leaky_relu')
+        'Tanh': Tanh(),
+        'LeakyReLU': LeakyReLU()
     }
     
     for name, activation in activations.items():
