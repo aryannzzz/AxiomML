@@ -16,6 +16,13 @@ class MultipleLinearRegression:
         self.fit_intercept = fit_intercept
         self.coefficients = None  # Will store [b, w₁, w₂, ..., wₙ] if fit_intercept=True
                                   # or [w₁, w₂, ..., wₙ] if fit_intercept=False
+        self.intercept_ = None    # For sklearn-like API
+        self.coef_ = None         # For sklearn-like API
+    
+    @property
+    def intercept(self):
+        """Property for easier access to intercept (alias for intercept_)"""
+        return self.intercept_
     
     def _add_intercept(self, X):
         """
@@ -66,6 +73,14 @@ class MultipleLinearRegression:
             # This is more numerically stable but computationally expensive
             self.coefficients = np.linalg.pinv(X_design) @ y
         
+        # Set sklearn-like attributes for easier access
+        if self.fit_intercept:
+            self.intercept_ = self.coefficients[0]
+            self.coef_ = self.coefficients[1:]
+        else:
+            self.intercept_ = 0.0
+            self.coef_ = self.coefficients
+        
         return self
     
     def predict(self, X):
@@ -89,6 +104,24 @@ class MultipleLinearRegression:
         # Matrix multiplication: X_design (n_samples × n_features) 
         # @ coefficients (n_features × 1) = predictions (n_samples × 1)
         return X_design @ self.coefficients
+    
+    def score(self, X, y):
+        """
+        Calculate R² score (coefficient of determination).
+        Measures how well the model explains the variance in the target.
+        R² = 1 - (SS_residual / SS_total)
+        """
+        y_pred = self.predict(X)
+        y = np.array(y).flatten()
+        
+        # Sum of squared residuals (errors our model makes)
+        ss_residual = np.sum((y - y_pred) ** 2)
+        # Total sum of squares (total variance in target)
+        ss_total = np.sum((y - np.mean(y)) ** 2)
+        
+        # R² score: 1 = perfect fit, 0 = no better than mean prediction
+        r_squared = 1 - (ss_residual / ss_total)
+        return r_squared
     
     def get_params(self, feature_names=None):
         """

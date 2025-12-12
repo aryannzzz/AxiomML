@@ -171,6 +171,19 @@ class DecisionTreeRegressor:
         X = np.array(X)
         return np.array([self._predict_single(x, self.root) for x in X])
     
+    def score(self, X, y):
+        """
+        Calculate R² score (coefficient of determination).
+        """
+        y_pred = self.predict(X)
+        y = np.array(y).flatten()
+        
+        ss_residual = np.sum((y - y_pred) ** 2)
+        ss_total = np.sum((y - np.mean(y)) ** 2)
+        
+        r_squared = 1 - (ss_residual / ss_total)
+        return r_squared
+    
     def get_depth(self, node=None):
         """Calculate the depth of the tree"""
         if node is None:

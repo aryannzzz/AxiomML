@@ -112,7 +112,7 @@ def example_2_multiple_linear_regression():
     print(f"  Intercept: {model.intercept:.2f}")
     print(f"  Coefficients:")
     feature_names = ['Square Footage (100s)', 'Bedrooms', 'Age (years)']
-    for name, coef in zip(feature_names, model.coefficients):
+    for name, coef in zip(feature_names, model.coef_):
         sign = "+" if coef >= 0 else ""
         print(f"    {name:25s}: {sign}{coef:.2f}")
     print()
@@ -120,9 +120,9 @@ def example_2_multiple_linear_regression():
     print(f"  R² Score: {r2:.4f} ({r2*100:.1f}% of variance explained)")
     print()
     print(f"Interpretation:")
-    print(f"  • Each 100 sq ft adds ${model.coefficients[0]:.0f}k to price")
-    print(f"  • Each bedroom adds ${model.coefficients[1]:.0f}k to price")
-    print(f"  • Each year of age reduces price by ${abs(model.coefficients[2]):.0f}k")
+    print(f"  • Each 100 sq ft adds ${model.coef_[0]:.0f}k to price")
+    print(f"  • Each bedroom adds ${model.coef_[1]:.0f}k to price")
+    print(f"  • Each year of age reduces price by ${abs(model.coef_[2]):.0f}k")
     print()
 
 

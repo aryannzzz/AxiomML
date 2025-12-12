@@ -1,6 +1,5 @@
 # axiom/naive_bayes/gaussian_nb.py
 import numpy as np
-from scipy.stats import norm
 
 class GaussianNB:
     """

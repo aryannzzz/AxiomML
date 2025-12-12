@@ -82,7 +82,7 @@ def example_1_single_tree_vs_forest_classification():
     
     # Random Forest
     print("2. Random Forest (50 trees):")
-    forest = RandomForestClassifier(n_estimators=50, max_depth=10, random_state=42)
+    forest = RandomForestClassifier(n_estimators=50, max_depth=10)
     forest.fit(X_train, y_train)
     
     forest_train_acc = forest.score(X_train, y_train)
@@ -138,7 +138,7 @@ def example_2_single_tree_vs_forest_regression():
     
     # Random Forest
     print("2. Random Forest (50 trees):")
-    forest = RandomForestRegressor(n_estimators=50, max_depth=10, random_state=42)
+    forest = RandomForestRegressor(n_estimators=50, max_depth=10)
     forest.fit(X_train, y_train)
     
     forest_train_r2 = forest.score(X_train, y_train)
@@ -185,8 +185,7 @@ def example_3_number_of_trees():
     for n_trees in n_trees_list:
         forest = RandomForestClassifier(
             n_estimators=n_trees, 
-            max_depth=10, 
-            random_state=42
+            max_depth=10
         )
         forest.fit(X_train, y_train)
         
@@ -229,8 +228,7 @@ def example_4_max_depth_effect():
     for depth in depths:
         forest = RandomForestClassifier(
             n_estimators=50, 
-            max_depth=depth, 
-            random_state=42
+            max_depth=depth
         )
         forest.fit(X_train, y_train)
         
@@ -286,7 +284,7 @@ def example_5_feature_importance():
     y_train, y_test = y[:split], y[split:]
     
     # Train Random Forest
-    forest = RandomForestClassifier(n_estimators=50, max_depth=10, random_state=42)
+    forest = RandomForestClassifier(n_estimators=50, max_depth=10)
     forest.fit(X_train, y_train)
     
     print(f"Dataset: {len(X)} samples, 3 features")

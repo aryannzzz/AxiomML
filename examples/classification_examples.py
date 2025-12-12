@@ -235,7 +235,7 @@ def example_4_svm():
     y_train, y_test = y_svm[:split], y_svm[split:]
     
     # Train
-    model = SVC(C=1.0, kernel='linear', max_iters=1000)
+    model = SVC(C=1.0, max_iters=1000)
     model.fit(X_train, y_train)
     
     # Predict
@@ -246,9 +246,9 @@ def example_4_svm():
     print(f"Algorithm: Support Vector Machine")
     print()
     print(f"Model Details:")
-    print(f"  Kernel: Linear")
+    print(f"  Kernel: Linear (only linear kernel implemented)")
     print(f"  C parameter: {model.C} (regularization)")
-    print(f"  Support vectors: {np.sum(np.abs(model.alphas) > 1e-5)} samples")
+    print(f"  Support vectors: {len(model.support_vectors_) if model.support_vectors_ is not None else 'N/A'}")
     print()
     print(f"Performance:")
     print(f"  Accuracy: {accuracy:.4f} ({accuracy*100:.1f}%)")
